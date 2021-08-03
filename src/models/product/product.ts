@@ -1,6 +1,8 @@
 export interface IProduct {
+	sku: string;
 	name: string;
-	originalPrice: number;
+	price: string;
+	originalPrice: string;
 	category: ICategory;
 	description?: string;
 	images: string[];
@@ -8,8 +10,10 @@ export interface IProduct {
 }
 
 export interface ProductDTO {
+	sku: string;
 	name: string;
-	originalPrice: number;
+	price: string;
+	originalPrice: string;
 	category: string;
 	description?: string;
 	images: string[];

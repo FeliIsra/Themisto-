@@ -16,5 +16,5 @@ export interface JobDTO {
 export interface IResponseJob {
 	id: string;
 	products?: IProduct[];
-	error?: string;
+	error?: any;
 }

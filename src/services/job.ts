@@ -1,22 +1,20 @@
 import { IResponseJob, JobDTO } from "../models/job/jobDTO"
 import { IProduct } from "../models/product/product"
+import { searchCrawl } from "./crawl/provider";
 
-export const executeJob = (job: JobDTO): IResponseJob => {
 
-	// TODO: Aca llamo a poopetter
+export const executeJob = async (job: JobDTO): Promise<IResponseJob> => {
+	let product: IProduct;
 
-	// Devuelvo todos los productos con el ID
-
-	const product: IProduct = {
-		name: "product",
-		description: "description",
-		originalPrice: 4,
-		category: {name: "category"},
-		images: ["img1", "img2"],
-		related: ["related1", "related2"]
+	try {
+		const provider: string = job.searchData.provider;
+		product = await searchCrawl[provider](job.searchData.query)
+	} catch {
+		return {
+			id: job.id,
+			error: job.id
+		}
 	}
-
-	console.log(job.id)
 
 	return {
 		id: job.id,

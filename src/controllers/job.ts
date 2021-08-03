@@ -7,7 +7,7 @@ const jobsController = new Router();
 jobsController.post('/job', async (ctx) => {
 	const job: JobDTO = JSON.parse(ctx.request.body).data;
 
-	const response: IResponseJob = executeJob(job)
+	const response: IResponseJob = await executeJob(job)
 
 	if(!response.error){
 		ctx.response.status = 200;
