@@ -4,11 +4,11 @@ import { searchCrawl } from "./crawl/provider";
 
 
 export const executeJob = async (job: JobDTO): Promise<IResponseJob> => {
-	let product: IProduct;
+	let products: IProduct[];
 
 	try {
 		const provider: string = job.searchData.provider;
-		product = await searchCrawl[provider](job.searchData.query)
+		products = await searchCrawl[provider](job.searchData.query)
 	} catch {
 		return {
 			id: job.id,
@@ -18,6 +18,6 @@ export const executeJob = async (job: JobDTO): Promise<IResponseJob> => {
 
 	return {
 		id: job.id,
-		products: [product]
+		products: products
 	}
 }
