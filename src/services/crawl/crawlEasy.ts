@@ -21,8 +21,6 @@ export const crawlEasy = async (query: string) => {
 		return document.body.querySelector('#Search_Result_div > div.center-content-area.products-container').childElementCount
 	})
 	for (let i = 1; i <= cantProducts; i++) { 
-		console.log(cantProducts)
-		console.log(i)
 		await page.waitForSelector(`#WC_CatalogSearchResultDisplay_div_6_${i}`)
 		await page.click(`#WC_CatalogSearchResultDisplay_div_6_${i}`)
 		
@@ -41,7 +39,6 @@ export const crawlEasy = async (query: string) => {
 				images: [document.body.querySelector('#fotorama-p > div > div > div.fotorama__stage__shaft > div > img').getAttribute('src')],
 				related: []
 			}	
-	
 			return product
 		}) 
 	
