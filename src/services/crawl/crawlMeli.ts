@@ -6,7 +6,7 @@ export const crawlMeli = async (query: string) => {
 	let products: IProduct[] = []
 
 	const browser = await puppeteer.launch({
-		headless: false,
+		headless: true,
 		slowMo: 100,
 	})
 	const page = await browser.newPage()
