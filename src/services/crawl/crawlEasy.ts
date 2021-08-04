@@ -8,6 +8,7 @@ export const crawlEasy = async (query: string) => {
 	const browser = await puppeteer.launch({
 		headless: true,
 		slowMo: 50,
+		args: ['--no-sandbox']
 	})
 	const page = await browser.newPage()
 	await page.setViewport({ width: 1600, height: 1200 });
