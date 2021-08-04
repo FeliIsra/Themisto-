@@ -9,7 +9,9 @@ export const executeJob = async (job: JobDTO): Promise<IResponseJob> => {
 	try {
 		const provider: string = job.searchData.provider;
 		products = await searchCrawl[provider](job.searchData.query)
-	} catch {
+	} catch (e) {
+		console.log(e)	
+
 		return {
 			id: job.id,
 			error: job.id
