@@ -1,8 +1,7 @@
 import * as Router from 'koa-router';
-import { getConfig } from '../config/configService';
 import { IResponseJob, JobDTO } from '../models/job/jobDTO';
 import { executeJob } from '../services/job';
-const CryptoJS = require("crypto-js");
+import { checkAuth } from '../config/auth'
 
 const jobsController = new Router();
 
@@ -28,20 +27,5 @@ jobsController.post('/job', async (ctx) => {
 	}
 
 });
-
-const checkAuth = (ctx: any) => {
-	var bytes  = CryptoJS.AES.decrypt(ctx.get('password'), getConfig('SECRET'));
-	var originalText = bytes.toString(CryptoJS.enc.Utf8);
-	if(originalText !== getConfig('PASS')){
-		ctx.response.status = 501;
-		ctx.body = {
-			status: "Error",
-			message:  "Auth error"
-		}
-
-		return false
-	}
-	return true
-}
 
 export default jobsController.routes();
