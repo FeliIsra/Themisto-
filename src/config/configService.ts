@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv'
 import * as fs from 'fs'
 
+
 let envConfig: dotenv.DotenvParseOutput;
 
 try{
