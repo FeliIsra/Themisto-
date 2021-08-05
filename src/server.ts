@@ -14,6 +14,6 @@ app.use(async (ctx, next) => {
 app.use(koaBody());
 app.use(router.routes());
 
-const server = app.listen(port);
+app.listen(port);
 
 console.log(`Server running on port ${port}`);
