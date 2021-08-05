@@ -6,15 +6,11 @@ import { checkAuth } from '../config/auth'
 const jobsController = new Router();
 
 jobsController.post('/job', async (ctx) => {
-	console.log("Llega request")
 	if(!checkAuth(ctx)) return	
-	console.log("Pasa Auth")
 
 	const job: JobDTO = JSON.parse(ctx.request.body).data;
-	console.log("Job", job)
 
 	const response: IResponseJob = await executeJob(job)
-	console.log("Response", response)
 
 	if(!response.error){
 		ctx.response.status = 200;
