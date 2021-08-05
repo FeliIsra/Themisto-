@@ -6,9 +6,8 @@ export const crawlEasy = async (query: string) => {
 	let products: IProduct[] = []
 
 	const browser = await puppeteer.launch({
-		headless: true,
-		slowMo: 50,
-		args: ['--no-sandbox']
+		headless: false,
+		slowMo: 100,
 	})
 	const page = await browser.newPage()
 	await page.setViewport({ width: 1600, height: 1200 });
