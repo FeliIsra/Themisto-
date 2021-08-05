@@ -6,9 +6,6 @@ import { checkAuth } from '../config/auth'
 const jobsController = new Router();
 
 jobsController.post('/job', async (ctx) => {
-
-	ctx.request.socket.setTimeout(5*60*1000)
-
 	console.log("Llega request")
 	if(!checkAuth(ctx)) return	
 	console.log("Pasa Auth")

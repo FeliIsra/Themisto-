@@ -15,6 +15,5 @@ app.use(koaBody());
 app.use(router.routes());
 
 const server = app.listen(port);
-server.timeout = 5*60*1000
 
 console.log(`Server running on port ${port}`);
